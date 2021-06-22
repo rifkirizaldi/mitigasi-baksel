@@ -17,8 +17,18 @@ class Admin extends CI_Controller
 
     public function index()
     {
+        $member = $this->M_anggota->get_count_member();
+        $prioritas = $this->M_public->get_priority();
+        foreach ($prioritas as $key) {
+            $result = $key['laki_06'] + $key['perempuan_06'] + $key['laki_69'] + $key['perempuan_69'] + $key['laki_912'] + $key['perempuan_912'] + $key['laki_12_24'] + $key['perempuan_12_24'] + $key['laki_2_5tahun'] + $key['perempuan_2_5tahun'] + $key['laki_lansia'] + $key['perempuan_lansia'] + $key['dis_fisik'] + $key['dis_intelektual'] + $key['dis_mental'] + $key['dis_sensor'];
+        }
+
         $data['title'] = 'Dashboard';
         $data['admin'] = $this->db->get_where('admin', ['username' => $this->session->userdata('username')])->row_array();
+        $data['prioritas'] = $result;
+        $data['anggota'] = $member['jumlah_anggota'];
+        // var_dump($data['anggota']);
+        // die;
         $this->load->view('templates/admin_header', $data);
         $this->load->view('templates/topbar', $data);
         $this->load->view('templates/sidebar', $data);

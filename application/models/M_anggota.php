@@ -11,4 +11,12 @@ class M_anggota extends CI_Model
         $query = $this->db->get();
         return $query->result_array();
     }
+
+    public function get_count_member()
+    {
+        $this->db->select('count(id) as jumlah_anggota');
+        $this->db->from('anggota');
+        $query = $this->db->get();
+        return $query->row_array();
+    }
 }
