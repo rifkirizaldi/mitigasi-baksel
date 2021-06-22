@@ -17,23 +17,32 @@ class Admin extends CI_Controller
 
     public function index()
     {
-        $member = $this->M_anggota->get_count_member();
-        $prioritas = $this->M_public->get_priority();
-        foreach ($prioritas as $key) {
-            $result = $key['laki_06'] + $key['perempuan_06'] + $key['laki_69'] + $key['perempuan_69'] + $key['laki_912'] + $key['perempuan_912'] + $key['laki_12_24'] + $key['perempuan_12_24'] + $key['laki_2_5tahun'] + $key['perempuan_2_5tahun'] + $key['laki_lansia'] + $key['perempuan_lansia'] + $key['dis_fisik'] + $key['dis_intelektual'] + $key['dis_mental'] + $key['dis_sensor'];
-        }
-
         $data['title'] = 'Dashboard';
         $data['admin'] = $this->db->get_where('admin', ['username' => $this->session->userdata('username')])->row_array();
-        $data['prioritas'] = $result;
-        $data['anggota'] = $member['jumlah_anggota'];
-        // var_dump($data['anggota']);
-        // die;
+        $data['data'] = $this->get_all_data();
         $this->load->view('templates/admin_header', $data);
         $this->load->view('templates/topbar', $data);
         $this->load->view('templates/sidebar', $data);
         $this->load->view('admin/index', $data);
         $this->load->view('templates/admin_footer');
+    }
+
+    public function get_all_data()
+    {
+        $priority = $this->M_public->get_priority();
+        $member = $this->M_anggota->get_count_member();
+
+        $data['anggota'] = $member['jumlah_anggota'];
+        $data['prioritas'] = $this->get_sum_priority();
+        $data['balita_laki'] = $this->get_sum_children_boys();
+        $data['balita_perempuan'] = $this->get_sum_children_girls();
+        $data['lansia_pria'] = $this->get_sum_menParents();
+        $data['lansia_wanita'] = $this->get_sum_womenParents();
+        $data['dis_fisik'] = $priority[0]['dis_fisik'];
+        $data['dis_intelektual'] = $priority[0]['dis_intelektual'];
+        $data['dis_mental'] = $priority[0]['dis_mental'];
+        $data['dis_sensor'] = $priority[0]['dis_sensor'];
+        return $data;
     }
 
     public function anggota()
@@ -84,4 +93,59 @@ class Admin extends CI_Controller
         ];
         echo json_encode($result);
     }
+
+    public function get_sum_priority()
+    {
+        $prioritas = $this->M_public->get_priority();
+        foreach ($prioritas as $key) {
+            $result = $key['laki_06'] + $key['perempuan_06'] + $key['laki_69'] + $key['perempuan_69'] + $key['laki_912'] + $key['perempuan_912'] + $key['laki_12_24'] + $key['perempuan_12_24'] + $key['laki_2_5tahun'] + $key['perempuan_2_5tahun'] + $key['laki_lansia'] + $key['perempuan_lansia'] + $key['dis_fisik'] + $key['dis_intelektual'] + $key['dis_mental'] + $key['dis_sensor'];
+        }
+        return $result;
+    }
+
+    public function get_sum_children_boys()
+    {
+        $prioritas = $this->M_public->get_priority();
+        foreach ($prioritas as $key) {
+            $result = $key['laki_06'] +  $key['laki_69']  + $key['laki_912']  + $key['laki_12_24']  + $key['laki_2_5tahun'];
+        }
+        return $result;
+    }
+    public function get_sum_children_girls()
+    {
+        $prioritas = $this->M_public->get_priority();
+        foreach ($prioritas as $key) {
+            $result = $key['perempuan_06'] + $key['perempuan_69'] + $key['perempuan_912'] + $key['perempuan_12_24'] + $key['perempuan_2_5tahun'];
+        }
+        return $result;
+    }
+
+    public function get_sum_menParents()
+    {
+        $prioritas = $this->M_public->get_priority();
+        foreach ($prioritas as $key) {
+            $result = $key['laki_lansia'];
+        }
+        return $result;
+    }
+
+    public function get_sum_womenParents()
+    {
+        $prioritas = $this->M_public->get_priority();
+        foreach ($prioritas as $key) {
+            $result = $key['perempuan_lansia'];
+        }
+        return $result;
+    }
 }
+
+// untuk function index
+//$data['prioritas'] = $this->get_sum_priority();
+//$data['balita_laki'] = $this->get_sum_children_boys();
+//$data['balita_perempuan'] = $this->get_sum_children_girls();
+//$data['lansia_pria'] = $this->get_sum_menParents();
+//$data['lansia_wanita'] = $this->get_sum_womenParents();
+//$data['dis_fisik'] = $priority[0]['dis_fisik'];
+//$data['dis_intelektual'] = $priority[0]['dis_intelektual'];
+//$data['dis_mental'] = $priority[0]['dis_mental'];
+//$data['dis_sensor'] = $priority[0]['dis_sensor'];
