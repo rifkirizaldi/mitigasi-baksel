@@ -50,10 +50,11 @@
                         </select>
                     </div>
                     <div class="col-sm-4">
-                        <select name="kampung" id="kampung" class="form-control">
+                        <select name="kampung" id="kampung" class="form-control form-control-select">
                             <option value="" selected>Pilih Kampung</option>
-                            <option value="cikumpay">Cikumpay</option>
-                            <option value="cimangpang">Cimangpang</option>
+                            <option value="Cikumpay">Cikumpay</option>
+                            <option value="Cimangpang">Cimangpang</option>
+                            <option value="Panggarangan">Panggarangan</option>
                         </select>
                     </div>
                 </div>
@@ -105,7 +106,7 @@
                                 <div>
                                     <h5 class="font-16">Masyarakat Rentan</h5>
                                 </div>
-                                <h3 class="mt-4"><?= $data['prioritas']; ?></h3>
+                                <h3 class="mt-4" id="jml_masyarakat_rentan"><?= $data['prioritas']; ?></h3>
                                 <div class="progress mt-4" style="height: 4px;">
                                     <div class="progress-bar bg-warning" role="progressbar" style="width: 68%" aria-valuenow="68" aria-valuemin="0" aria-valuemax="100"></div>
                                 </div>
@@ -122,8 +123,6 @@
                             <div class="card-body">
                                 <h4 class="mt-0 header-title mb-4">Data Masyarakat Rentan</h4>
                             </div>
-
-                            <!-- <div id="morris-area-example" class="morris-charts morris-chart-height"></div> -->
                             <canvas id="myChart" width="200" height="70"></canvas>
                         </div>
                     </div>
@@ -342,6 +341,38 @@
             pageLength: 10,
 
         });
+
+        // FILTER
+
+        $(".form-control-select").change(function() {
+
+            const bulan = $("#bulan").val();
+            const tahun = $("#tahun").val();
+            const kampung = $("#kampung").val();
+
+            $.ajax({
+                url: "<?= base_url('Admin/filter_priority') ?>",
+                method: "POST",
+                data: {
+                    bulan: bulan,
+                    tahun: tahun,
+                    kampung: kampung
+                },
+                success: function(json) {
+
+                    var obj = JSON.parse(json);
+                    const all_priority = (obj["all_priority"]);
+                    $("#jml_masyarakat_rentan").html(all_priority);
+
+                },
+                error: function(xhr, ajaxOptions, thrownError) {
+                    alert('Error AJAX');
+                }
+            });
+
+        });
+
+        // FILTER
     </script>
     <script>
         var ctx = document.getElementById('myChart').getContext('2d');

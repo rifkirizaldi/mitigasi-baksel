@@ -94,18 +94,18 @@ class Admin extends CI_Controller
         echo json_encode($result);
     }
 
-    public function get_sum_priority()
+    public function get_sum_priority($bulan = null, $kampung = null)
     {
-        $prioritas = $this->M_public->get_priority();
+        $prioritas = $this->M_public->get_priority($bulan, $kampung);
         foreach ($prioritas as $key) {
             $result = $key['laki_06'] + $key['perempuan_06'] + $key['laki_69'] + $key['perempuan_69'] + $key['laki_912'] + $key['perempuan_912'] + $key['laki_12_24'] + $key['perempuan_12_24'] + $key['laki_2_5tahun'] + $key['perempuan_2_5tahun'] + $key['laki_lansia'] + $key['perempuan_lansia'] + $key['dis_fisik'] + $key['dis_intelektual'] + $key['dis_mental'] + $key['dis_sensor'];
         }
         return $result;
     }
 
-    public function get_sum_children_boys()
+    public function get_sum_children_boys($bulan = null, $kampung = null)
     {
-        $prioritas = $this->M_public->get_priority();
+        $prioritas = $this->M_public->get_priority($bulan, $kampung);
         foreach ($prioritas as $key) {
             $result = $key['laki_06'] +  $key['laki_69']  + $key['laki_912']  + $key['laki_12_24']  + $key['laki_2_5tahun'];
         }
@@ -136,6 +136,21 @@ class Admin extends CI_Controller
             $result = $key['perempuan_lansia'];
         }
         return $result;
+    }
+
+    public function filter_priority()
+    {
+        $bulan = $this->input->post('bulan');
+        $kampung = $this->input->post('kampung');
+        $priority = $this->get_sum_priority($bulan, $kampung);
+        $balita_laki = $this->get_sum_children_boys($bulan, $kampung);
+
+        $data = [
+            'all_priority' => $priority,
+            'balita_laki' => $balita_laki
+        ];
+
+        echo json_encode($data);
     }
 }
 
