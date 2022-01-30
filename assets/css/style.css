@@ -12,6 +12,10 @@ body {
 	font-family: "Open Sans", sans-serif;
 	color: #444444;
 }
+body,
+html {
+	overflow-x: hidden !important;
+}
 
 a {
 	color: #67b0d1;

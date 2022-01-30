@@ -210,7 +210,7 @@
 
             <div class="row portfolio-container" data-aos="fade-up">
 
-                <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+                <div class="col-lg-4 col-md-6 col-sm-12 portfolio-item filter-app">
                     <div class="portfolio-wrap">
                         <img src="<?= base_url() ?>assets/images/kegiatan/1.jpg" class="img-fluid" alt="">
                         <div class="portfolio-links">
@@ -220,7 +220,7 @@
                     </div>
                 </div>
 
-                <div class="col-lg-4 col-md-6 portfolio-item filter-web">
+                <div class="col-lg-4 col-md-6 col-sm-12 portfolio-item filter-web">
                     <div class="portfolio-wrap">
                         <img src="<?= base_url() ?>assets/images/kegiatan/2.png" class="img-fluid" alt="">
                         <div class="portfolio-links">
@@ -230,7 +230,7 @@
                     </div>
                 </div>
 
-                <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+                <div class="col-lg-4 col-md-6 col-sm-12 portfolio-item filter-app">
                     <div class="portfolio-wrap">
                         <img src="<?= base_url() ?>assets/images/kegiatan/3.png" class="img-fluid" alt="">
                         <div class="portfolio-links">
@@ -240,7 +240,7 @@
                     </div>
                 </div>
 
-                <div class="col-lg-4 col-md-6 portfolio-item filter-card">
+                <div class="col-lg-4 col-md-6 col-sm-12 portfolio-item filter-card">
                     <div class="portfolio-wrap">
                         <img src="<?= base_url() ?>assets/images/kegiatan/4.jpg" class="img-fluid" alt="">
                         <div class="portfolio-links">
@@ -250,7 +250,7 @@
                     </div>
                 </div>
 
-                <div class="col-lg-4 col-md-6 portfolio-item filter-web">
+                <div class="col-lg-4 col-md-6 col-sm-12 portfolio-item filter-web">
                     <div class="portfolio-wrap">
                         <img src="<?= base_url() ?>assets/images/kegiatan/5.jpeg" class="img-fluid" alt="">
                         <div class="portfolio-links">
@@ -260,7 +260,7 @@
                     </div>
                 </div>
 
-                <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+                <div class="col-lg-4 col-md-6 col-sm-12 portfolio-item filter-app">
                     <div class="portfolio-wrap">
                         <img src="<?= base_url() ?>assets/images/kegiatan/6.jpeg" class="img-fluid" alt="">
                         <div class="portfolio-links">
@@ -270,7 +270,7 @@
                     </div>
                 </div>
 
-                <div class="col-lg-4 col-md-6 portfolio-item filter-card">
+                <div class="col-lg-4 col-md-6 col-sm-12 portfolio-item filter-card">
                     <div class="portfolio-wrap">
                         <img src="<?= base_url() ?>assets/images/kegiatan/7.jpeg" class="img-fluid" alt="">
                         <div class="portfolio-links">
@@ -280,7 +280,7 @@
                     </div>
                 </div>
 
-                <div class="col-lg-4 col-md-6 portfolio-item filter-card">
+                <div class="col-lg-4 col-md-6 col-sm-12 portfolio-item filter-card">
                     <div class="portfolio-wrap">
                         <img src="<?= base_url() ?>assets/images/kegiatan/8.jpeg" class="img-fluid" alt="">
                         <div class="portfolio-links">
@@ -290,7 +290,7 @@
                     </div>
                 </div>
 
-                <div class="col-lg-4 col-md-6 portfolio-item filter-web">
+                <div class="col-lg-4 col-md-6 col-sm-12 portfolio-item filter-web">
                     <div class="portfolio-wrap">
                         <img src="<?= base_url() ?>assets/images/kegiatan/9.jpg" class="img-fluid" alt="">
                         <div class="portfolio-links">
