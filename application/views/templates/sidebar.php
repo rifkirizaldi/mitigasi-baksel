@@ -15,37 +15,59 @@
                         </a>
                     </li>
 
-                    <li>
+                    <!-- <li>
                         <a href="javascript:void(0);" class="waves-effect"><i class="icon-mail-open"></i><span> Email <span class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span> </span></a>
                         <ul class="submenu">
                             <li><a href="email-inbox.html">Inbox</a></li>
                             <li><a href="email-read.html">Email Read</a></li>
                             <li><a href="email-compose.html">Email Compose</a></li>
                         </ul>
-                    </li>
+                    </li> -->
 
                     <li>
-                        <a href="calendar.html" class="waves-effect"><i class="icon-calendar"></i><span> Kalender </span></a>
+                        <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-information-outline"></i><span> Lapor <span class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span> </span></a>
+                        <ul class="submenu">
+                            <li><a href="<?= base_url('Admin/incident_report') ?>">Kejadian</a></li>
+                            <li><a href="<?= base_url('Admin/potention_report') ?>">Potensi</a></li>
+                        </ul>
                     </li>
 
                     <li>
                         <a href="<?= base_url('Admin/anggota') ?>" class="waves-effect"><i class="ti-user"></i><span> Anggota </span></a>
                     </li>
                     <li>
-                        <a href="<?= base_url('Admin/maps') ?>" class="waves-effect"><i class="mdi mdi-map-legend"></i><span> Peta </span></a>
+                        <a href="<?= base_url('Admin/penduduk') ?>" class="waves-effect"><i class="mdi mdi-account-multiple-outline"></i><span> Penduduk </span></a>
                     </li>
-
-                    <!-- <li>
-                        <a href="javascript:void(0);" class="waves-effect"><i class="icon-spread"></i><span> Anggota <span class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span> </span></a>
+                    <li>
+                        <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-content-save-outline"></i><span> Manajemen Konten <span class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span> </span></a>
                         <ul class="submenu">
-                            <li><a href="tables-datatable.html">Anggota Baru</a></li>
-                            <li><a href="<?= base_url('Admin/anggota_tetap') ?>">Anggota Tetap</a></li>
+                            <li><a href="#">Pengumuman</a></li>
+                            <li><a href="#">Banner</a></li>
                         </ul>
+                    </li>
+                    <!-- <li>
+                        <a href="<?= base_url('Admin/maps') ?>" class="waves-effect"><i class="mdi mdi-map-legend"></i><span> Peta </span></a>
                     </li> -->
+                    <!-- <li>
+                        <a href="https://inatews.bmkg.go.id/wrs/index.html" target="_blank" class="waves-effect"><i class="mdi mdi-map-legend"></i><span> Inatews </span></a>
+                    </li> -->
+                    <li>
+                        <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-map-legend"></i><span> BMKG <span class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span> </span></a>
+                        <ul class="submenu">
+                            <li>
+                                <a href="<?= base_url('Admin/inatews') ?>" class="waves-effect"><span> Inatews </span></a>
+                            </li>
+                            <li>
+                                <a href="<?= base_url('Admin/mhews') ?>" class="waves-effect"><span> MHEWS </span></a>
+                            </li>
+                        </ul>
+                    </li>
 
                     <li>
-                        <a href="javascript:void(0);" class="waves-effect"><i class="icon-coffee"></i> <span> Custom Pertanyaan </span></a>
+                        <a href="#" target="_blank" class="waves-effect"><i class="mdi mdi-map-legend"></i><span> Parameter </span></a>
                     </li>
+
+
 
 
                 </ul>
