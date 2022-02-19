@@ -60,21 +60,116 @@
                 </div>
 
                 <div class="row">
+                    <div class="col-sm-3 col-xl-3">
+                        <div class="card shadow bg-danger text-white">
+                            <div class="card-heading p-4">
+                                <div class="float-right">
+                                    <a type="button" data-toggle="modal" data-target="#myModal">
+                                        <i class="fa fa-ellipsis-v"></i>
+                                    </a>
+                                </div>
+                                <div>
+                                    <h5 class="font-16">KAPASITAS TES</h5>
+                                </div>
+                                <div class="row">
+                                    <div class="col-10">
+                                        <h3 class="mt-4">1 : 2500</h3>
+                                    </div>
+                                    <div class="col-2">
+                                        <div class="mini-stat-icon float-right">
+                                            <i class="fa fa-home"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3 col-xl-3">
+                        <div class="card shadow bg-danger text-white">
+                            <div class="card-heading p-4">
+                                <div class="float-right">
+                                    <a type="button" data-toggle="modal" data-target="#myModal">
+                                        <i class="fa fa-ellipsis-v"></i>
+                                    </a>
+                                </div>
+                                <div>
+                                    <h5 class="font-16">DOKTER</h5>
+                                </div>
+                                <div class="row">
+                                    <div class="col-10">
+                                        <h3 class="mt-4">1 : 2610</h3>
+                                    </div>
+                                    <div class="col-2">
+                                        <div class="mini-stat-icon float-right">
+                                            <i class="fa fa-stethoscope"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3 col-xl-3">
+                        <div class="card shadow bg-danger text-white">
+                            <div class="card-heading p-4">
+                                <div class="float-right">
+                                    <a type="button" data-toggle="modal" data-target="#myModal">
+                                        <i class="fa fa-ellipsis-v"></i>
+                                    </a>
+                                </div>
+                                <div>
+                                    <h5 class="font-16">PERAWAT</h5>
+                                </div>
+                                <div class="row">
+                                    <div class="col-10">
+                                        <h3 class="mt-4">1 : 2610</h3>
+                                    </div>
+                                    <div class="col-2">
+                                        <div class="mini-stat-icon float-right">
+                                            <i class="fa fa-stethoscope"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3 col-xl-3">
+                        <div class="card shadow bg-success text-white">
+                            <div class="card-heading p-4">
+                                <div class="float-right">
+                                    <a type="button" data-toggle="modal" data-target="#myModal">
+                                        <i class="fa fa-ellipsis-v"></i>
+                                    </a>
+                                </div>
+                                <div>
+                                    <h5 class="font-16">BIDAN</h5>
+                                </div>
+                                <div class="row">
+                                    <div class="col-10">
+                                        <h3 class="mt-4">1 : 2610</h3>
+                                    </div>
+                                    <div class="col-2">
+                                        <div class="mini-stat-icon float-right">
+                                            <i class="fa fa-stethoscope"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
 
                     <div class="col-sm-4 col-xl-4">
                         <div class="card shadow">
                             <div class="card-heading p-4">
                                 <div class="mini-stat-icon float-right">
-                                    <i class="mdi mdi-account-multiple-plus-outline bg-primary text-white"></i>
+                                    <i class="fas fa-info bg-primary text-white"></i>
                                 </div>
                                 <div>
-                                    <h5 class="font-16">Anggota Baru</h5>
+                                    <h5 class="font-16">Laporan Kejadian</h5>
                                 </div>
                                 <h3 class="mt-4">3</h3>
-                                <div class="progress mt-4" style="height: 4px;">
-                                    <div class="progress-bar bg-primary" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                                <p class="text-muted mt-2 mb-0">Previous period<span class="float-right">75%</span></p>
                             </div>
                         </div>
                     </div>
@@ -83,16 +178,12 @@
                         <div class="card shadow rounded">
                             <div class="card-heading p-4">
                                 <div class="mini-stat-icon float-right">
-                                    <i class="mdi mdi-account-star-outline bg-success text-white"></i>
+                                    <i class="fas fa-info bg-primary text-white"></i>
                                 </div>
                                 <div>
-                                    <h5 class="font-16">Anggota Tetap</h5>
+                                    <h5 class="font-16">Laporan Potensi</h5>
                                 </div>
                                 <h3 class="mt-4"><?= $data['anggota']; ?></h3>
-                                <div class="progress mt-4" style="height: 4px;">
-                                    <div class="progress-bar bg-success" role="progressbar" style="width: 88%" aria-valuenow="88" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                                <p class="text-muted mt-2 mb-0">Previous period<span class="float-right">88%</span></p>
                             </div>
                         </div>
                     </div>
@@ -104,13 +195,9 @@
                                     <i class="mdi mdi-baby bg-warning text-white"></i>
                                 </div>
                                 <div>
-                                    <h5 class="font-16">Masyarakat Rentan</h5>
+                                    <h5 class="font-16">Masyarakat Prioritas</h5>
                                 </div>
                                 <h3 class="mt-4" id="jml_masyarakat_rentan"><?= $data['prioritas']; ?></h3>
-                                <div class="progress mt-4" style="height: 4px;">
-                                    <div class="progress-bar bg-warning" role="progressbar" style="width: 68%" aria-valuenow="68" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                                <p class="text-muted mt-2 mb-0">Previous period<span class="float-right">68%</span></p>
                             </div>
                         </div>
                     </div>
@@ -118,52 +205,52 @@
                 </div>
 
                 <div class="row">
-                    <div class="col-xl-12">
+                    <div class="col-6">
                         <div class="card m-b-30">
                             <div class="card-body">
-                                <h4 class="mt-0 header-title mb-4">Data Masyarakat Rentan</h4>
+                                <h4 class="mt-0 header-title mb-4">Grafik Masyarakat Prioritas</h4>
                             </div>
-                            <canvas id="myChart" width="200" height="70"></canvas>
+                            <canvas id="myChart" width="200" height="193"></canvas>
+                        </div>
+                    </div>
+
+                    <div class="col-6">
+                        <div class="card m-b-30">
+                            <div class="card-body">
+                                <h4 class="mt-0 header-title mb-4">Tabel Penduduk</h4>
+
+                                <div class="table-responsive">
+                                    <table id="datatable" class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Tanggal Survey</th>
+                                                <th scope="col">Kepala Keluarga</th>
+                                                <th scope="col">Pendapatan</th>
+                                                <th scope="col">Jumlah Jiwa</th>
+                                                <th scope="col">Surveyor</th>
+                                                <th scope="col">Lokasi</th>
+                                                <th scope="col">Aksi</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                            </div>
                         </div>
                     </div>
                 </div>
                 <!-- end col -->
 
 
+                <!-- START ROW -->
+
+
+                <!-- END ROW -->
             </div>
             <!-- end row -->
 
-            <!-- START ROW -->
-            <div class="row">
-                <div class="col-xl-12">
-                    <div class="card m-b-30">
-                        <div class="card-body">
-                            <h4 class="mt-0 header-title mb-4">Data Penduduk</h4>
-
-                            <div class="table-responsive">
-                                <table id="datatable" class="table table-hover">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">Tanggal Survey</th>
-                                            <th scope="col">Kepala Keluarga</th>
-                                            <th scope="col">Pendapatan</th>
-                                            <th scope="col">Jumlah Jiwa</th>
-                                            <th scope="col">Surveyor</th>
-                                            <th scope="col">Lokasi</th>
-                                            <th scope="col">Aksi</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                    </tbody>
-                                </table>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-            <!-- END ROW -->
 
         </div>
         <!-- container-fluid -->
@@ -338,7 +425,7 @@
                 [5, 10, 25, 50, 100, 1000]
             ],
             pagingType: "simple_numbers",
-            pageLength: 10,
+            pageLength: 5,
 
         });
 

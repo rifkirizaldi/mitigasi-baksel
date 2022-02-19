@@ -3,11 +3,32 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class M_public extends CI_Model
 {
-    public function get_public()
+    public function get_public($bulan = null, $kampung = null)
     {
-        $this->db->select('id_penduduk, nama_kk, sumber_penghasilan as pendapatan, jumlah_jiwa, gps, surveyor, tanggal_survey');
+        $this->db->select('id_penduduk, nama_kk, sumber_penghasilan as pendapatan, jumlah_jiwa, gps, surveyor, tanggal_survey, kampung');
         $this->db->from('penduduk');
         $this->db->order_by('tanggal_survey', 'desc');
+        if (!empty($kampung)) {
+            $this->db->where("kampung", $kampung);
+        }
+        if (!empty($bulan)) {
+            $this->db->where('MONTH(tanggal_survey)', date("m", strtotime(str_replace('/', '-', $bulan))));
+        }
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+
+    public function get_detail_priority($bulan = null, $kampung = null)
+    {
+        $this->db->select("tanggal_survey, nama_kk, sumber_penghasilan as pendapatan, jumlah_jiwa, surveyor, gps, kampung");
+        $this->db->distinct();
+        $this->db->from('penduduk');
+        if (!empty($kampung)) {
+            $this->db->where("kampung", $kampung);
+        }
+        if (!empty($bulan)) {
+            $this->db->where('MONTH(tanggal_survey)', date("m", strtotime(str_replace('/', '-', $bulan))));
+        }
         $query = $this->db->get();
         return $query->result_array();
     }

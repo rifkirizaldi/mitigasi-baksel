@@ -26,6 +26,40 @@ class Admin extends CI_Controller
         $this->load->view('admin/index', $data);
         $this->load->view('templates/admin_footer');
     }
+    public function inatews()
+    {
+        $data['title'] = 'Inatews';
+        $data['admin'] = $this->db->get_where('admin', ['username' => $this->session->userdata('username')])->row_array();
+        $data['data'] = $this->get_all_data();
+        $this->load->view('templates/admin_header', $data);
+        $this->load->view('templates/topbar', $data);
+        $this->load->view('templates/sidebar', $data);
+        $this->load->view('admin/inatews', $data);
+        $this->load->view('templates/admin_footer');
+    }
+    public function mhews()
+    {
+        $data['title'] = 'Mhews';
+        $data['admin'] = $this->db->get_where('admin', ['username' => $this->session->userdata('username')])->row_array();
+        $data['data'] = $this->get_all_data();
+        $this->load->view('templates/admin_header', $data);
+        $this->load->view('templates/topbar', $data);
+        $this->load->view('templates/sidebar', $data);
+        $this->load->view('admin/mhews', $data);
+        $this->load->view('templates/admin_footer');
+    }
+
+    public function add_report_incident()
+    {
+        $data['title'] = 'Tambah Laporan Kejadian';
+        $data['admin'] = $this->db->get_where('admin', ['username' => $this->session->userdata('username')])->row_array();
+        $data['data'] = $this->get_all_data();
+        $this->load->view('templates/admin_header', $data);
+        $this->load->view('templates/topbar', $data);
+        $this->load->view('templates/sidebar', $data);
+        $this->load->view('admin/add_incident', $data);
+        $this->load->view('templates/admin_footer');
+    }
 
     public function get_all_data()
     {
@@ -56,17 +90,47 @@ class Admin extends CI_Controller
         $this->load->view('templates/admin_footer');
     }
 
+    public function penduduk()
+    {
+        $data['title'] = 'Penduduk';
+        $data['admin'] = $this->db->get_where('admin', ['username' => $this->session->userdata('username')])->row_array();
+        $data['data'] = $this->get_all_data();
+        $this->load->view('templates/admin_header', $data);
+        $this->load->view('templates/topbar', $data);
+        $this->load->view('templates/sidebar', $data);
+        $this->load->view('admin/penduduk', $data);
+        $this->load->view('templates/admin_footer');
+    }
+
     public function maps()
     {
         $data['title'] = 'Peta Rendaman';
         $data['admin'] = $this->db->get_where('admin', ['username' => $this->session->userdata('username')])->row_array();
         $data['peta'] = $this->M_peta->get_maps();
-        // var_dump($data['peta']);
-        // die;
         $this->load->view('templates/admin_header', $data);
         $this->load->view('templates/topbar', $data);
         $this->load->view('templates/sidebar', $data);
         $this->load->view('peta', $data);
+        $this->load->view('templates/admin_footer');
+    }
+    public function incident_report()
+    {
+        $data['title'] = 'Lapor Kejadian';
+        $data['admin'] = $this->db->get_where('admin', ['username' => $this->session->userdata('username')])->row_array();
+        $this->load->view('templates/admin_header', $data);
+        $this->load->view('templates/topbar', $data);
+        $this->load->view('templates/sidebar', $data);
+        $this->load->view('admin/incident_report', $data);
+        $this->load->view('templates/admin_footer');
+    }
+    public function potention_report()
+    {
+        $data['title'] = 'Lapor Potensi Bencana';
+        $data['admin'] = $this->db->get_where('admin', ['username' => $this->session->userdata('username')])->row_array();
+        $this->load->view('templates/admin_header', $data);
+        $this->load->view('templates/topbar', $data);
+        $this->load->view('templates/sidebar', $data);
+        $this->load->view('admin/potention_report', $data);
         $this->load->view('templates/admin_footer');
     }
 
@@ -84,11 +148,18 @@ class Admin extends CI_Controller
 
     public function get_public()
     {
-        $data = $this->M_public->get_public();
+        if ($this->input->post() !== Null) {
+            $bulan = $this->input->post('bulan');
+            $kampung = $this->input->post('kampung');
+            $data = $this->M_public->get_public($bulan, $kampung);
+            $priority = $this->get_sum_priority($bulan, $kampung);
+            $balita_laki = $this->get_sum_children_boys($bulan, $kampung);
+        } else {
+            $data = $this->M_public->get_public();
+        }
         $result = [
-            'draw' => '',
-            'recordsFiltered' => '',
-            'recordsTotal' => '',
+            'all_priority' => $priority,
+            'balita_laki' => $balita_laki,
             'data' => $data
         ];
         echo json_encode($result);
@@ -101,6 +172,12 @@ class Admin extends CI_Controller
             $result = $key['laki_06'] + $key['perempuan_06'] + $key['laki_69'] + $key['perempuan_69'] + $key['laki_912'] + $key['perempuan_912'] + $key['laki_12_24'] + $key['perempuan_12_24'] + $key['laki_2_5tahun'] + $key['perempuan_2_5tahun'] + $key['laki_lansia'] + $key['perempuan_lansia'] + $key['dis_fisik'] + $key['dis_intelektual'] + $key['dis_mental'] + $key['dis_sensor'];
         }
         return $result;
+    }
+
+    public function detail_row($bulan = null, $kampung = null)
+    {
+        $detail = $this->M_public->get_detail_priority($bulan, $kampung);
+        return $detail;
     }
 
     public function get_sum_children_boys($bulan = null, $kampung = null)
@@ -144,8 +221,9 @@ class Admin extends CI_Controller
         $kampung = $this->input->post('kampung');
         $priority = $this->get_sum_priority($bulan, $kampung);
         $balita_laki = $this->get_sum_children_boys($bulan, $kampung);
-
+        // $detail = $this->detail_row($bulan, $kampung);
         $data = [
+            // 'detail' => $detail,
             'all_priority' => $priority,
             'balita_laki' => $balita_laki
         ];
